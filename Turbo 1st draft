@@ -1,0 +1,65 @@
+#include <iostream>
+#include <math.h>
+#include <string>
+
+using namespace std;
+
+int
+main ()
+{
+  string start;
+  double speed;
+  double rpm;
+  double tireD;
+  double gearratio;
+  double status;
+  string checkturbo;
+  bool turbo;
+
+  cout <<
+	"Hello, my name is Dragon, a next generation turbo system made to enhance your driving experience!";
+  cout <<
+	"Let's get started. What is the tire diameter? (Enter value in inches) ";
+  cin >> tireD;
+  cout <<
+	"Finally, what is the gear ratio? (Enter single number or decimal) ";
+  cin >> gearratio;
+
+  cout << "Would you like to commence turbo charging? ";
+  cin >> start;
+
+  rpm = 15000;					//connect to rpm censor to read current rpm. This RPM is for the sake of example
+
+  speed = (rpm * 3.14 * tireD *60) / (gearratio*63360);
+
+  if (start == "yes" || start == "Yes")
+	{
+	  cout << "Understood ";
+
+	  status = 100;				// ((turbofanspeed/finalturbospeed)*100) connect to sensor to read the speed of the turbo fan
+
+	  cout << "Turbo charging is currently at " << status << "% ";
+
+	  if (status == 100)
+		{
+		  cout << "Would you like to activate turbo? ";
+		  cin >> checkturbo;
+
+		  if (checkturbo == "yes" || checkturbo == "Yes")
+			{
+			  turbo = true;
+			}
+
+		  else
+			{
+			  cout << "Understood, activating turbo.";	//send signal to turbo system.
+			}
+		  cout << "Your speed is currently " << speed << " mph";
+		}
+
+	  else
+		{
+		  cout << "Understood, have a good day.";
+		}
+	}
+}
